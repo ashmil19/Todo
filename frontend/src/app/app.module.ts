@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodolistComponent } from './components/todolist/todolist.component';
 
+import { ApiService } from './services/api.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,7 @@ import { TodolistComponent } from './components/todolist/todolist.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ ApiService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
