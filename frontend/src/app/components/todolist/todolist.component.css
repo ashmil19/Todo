@@ -1,12 +1,12 @@
 body{
     background-color: #111827;
     color: white;
-    padding: 0 50px;
+    padding: 0 60px;
     font-family: 'Poppins', sans-serif;
 }
 
 .nav{
-    height:80px;
+    height:70px;
     background-color: #111827;
 }
 
@@ -30,5 +30,34 @@ body{
     border: none;
     border-radius: 10px;
     font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.box-wrapper{
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.boxes{
+    width: 440px;
+    height: 500px;
+    background-color: #1f2937;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.box-head{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.box-head p{
+    font-size: 22px;
     font-weight: 700;
 }
