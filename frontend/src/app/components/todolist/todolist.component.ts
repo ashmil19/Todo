@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodolistComponent implements OnInit {
 
+  tdy: Date = new Date();
+
   constructor() { }
 
   ngOnInit(): void {
