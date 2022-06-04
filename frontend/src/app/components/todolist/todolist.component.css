@@ -48,6 +48,7 @@ body{
     background-color: #1f2937;
     border-radius: 20px;
     padding: 20px;
+
 }
 
 .box-head{
@@ -55,9 +56,16 @@ body{
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .box-head p{
     font-size: 22px;
     font-weight: 700;
+}
+
+.plus{
+    color: #047857;
+    font-size: 30px;
+    cursor: pointer;
 }
