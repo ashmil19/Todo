@@ -23,7 +23,7 @@ export class TodolistComponent implements OnInit {
   openDialog(){
     console.log('open');
     
-    const myTempDialog = this.dialog.open(this.dialogRef);
+    const myTempDialog = this.dialog.open(this.dialogRef, {disableClose: true});
     myTempDialog.afterClosed().subscribe(()=>{
       console.log('closed');
       
