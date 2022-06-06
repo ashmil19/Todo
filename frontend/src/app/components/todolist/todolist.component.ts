@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ElementRef } from '@angular/core';
+
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-todolist',
@@ -9,9 +11,29 @@ export class TodolistComponent implements OnInit {
 
   tdy: Date = new Date();
 
-  constructor() { }
+  @ViewChild('dialogRef')
+  dialogRef!: TemplateRef<any>;
+
+
+  constructor(public dialog:MatDialog) {}
 
   ngOnInit(): void {
+  }
+
+  openDialog(){
+    console.log('open');
+    
+    const myTempDialog = this.dialog.open(this.dialogRef);
+    myTempDialog.afterClosed().subscribe(()=>{
+      console.log('closed');
+      
+    })
+  }
+
+  closeDialog(){
+    console.log('close');
+    this.dialog.closeAll()
+    
   }
 
 }

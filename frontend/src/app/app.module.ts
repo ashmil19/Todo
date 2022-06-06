@@ -5,7 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodolistComponent } from './components/todolist/todolist.component';
 
-import { ApiService } from './services/api.service'
+import { ApiService } from './services/api.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
+import { AutosizeModule } from '@techiediaries/ngx-textarea-autosize';
 
 @NgModule({
   declarations: [
@@ -14,7 +20,12 @@ import { ApiService } from './services/api.service'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonToggleModule,
+    AutosizeModule,
+
   ],
   providers: [ ApiService ],
   bootstrap: [AppComponent]

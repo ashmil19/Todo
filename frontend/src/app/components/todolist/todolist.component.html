@@ -11,7 +11,7 @@
                 <p>{{tdy | date:'EEEE, MMMM d'}}</p>
             </div>
             <div class="tod-head-button">
-                <button class="tod-head-add-button">Add Todo</button>
+                <button class="tod-head-add-button" (click)="openDialog()">Add Todo</button>
             </div>
         </header>
         
@@ -20,21 +20,21 @@
             <div class="boxes">
                 <div class="box-head">
                     <p>Today</p>
-                    <span class="material-icons plus">add</span>
+                    <!-- <span class="material-icons plus" (click)="openDialog()">add</span> -->
                 </div>
             </div>
 
             <div class="boxes">
                 <div class="box-head">
                     <p>This week</p>
-                    <span class="material-icons plus">add</span>
+                    <!-- <span class="material-icons plus">add</span> -->
                 </div>
             </div>
 
             <div class="boxes">
                 <div class="box-head">
                     <p>This month</p>
-                    <span class="material-icons plus">add</span>
+                    <!-- <span class="material-icons plus">add</span> -->
                 </div>
             </div>
 
@@ -43,6 +43,39 @@
     </section>
     
     <footer>
-        hiii
+        
     </footer>
+
 </body>
+
+
+<ng-template #dialogRef let-mydata>
+    <div class="dialogs">
+        <form >
+            <div class="dialog-wrap">
+                <div class="dailog-text-input">
+                    <p>What do you want to do?</p>
+                    <textarea name="" id="" cols="40" rows="3" autosize ></textarea>
+                </div>
+                <div class="dailog-selection">
+                    
+                    <p>When do you want to do this?</p>
+                    <section class="dialog-section">
+                        <mat-button-toggle-group class="dialog-toggles"  name=when aria-label="Font Style">
+                            <mat-button-toggle class="dialog-btn-toggle dialog-today" value="TD">Today</mat-button-toggle>
+                            <mat-button-toggle class="dialog-btn-toggle dialog-week" value="TW">This Week</mat-button-toggle>
+                            <mat-button-toggle class="dialog-btn-toggle dialog-month" value="TM">This Month</mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </section>
+
+                </div>
+
+                <div class="dailog-buttons">
+                    <button class="dialog-save-btn">Save Todo</button>
+                    <button class="dialog-close-btn" (click)="closeDialog()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
