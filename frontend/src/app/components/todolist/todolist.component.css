@@ -76,6 +76,11 @@ textarea{
     cursor: pointer;
 }
 
+::ng-deep.cdk-global-overlay-wrapper{
+    background-color: rgba(31, 41, 55, 0.749);
+    /* background-color: rgba(41, 41, 71, 0.5); */
+}
+
 .dialogs {
     width: 100%;
     background-color: #111827;
@@ -85,6 +90,7 @@ textarea{
     padding: 45px !important;
     background-color: #111827;
     color: white;
+    border-radius: 20px !important;
 }
 
 .dialog-wrap{
