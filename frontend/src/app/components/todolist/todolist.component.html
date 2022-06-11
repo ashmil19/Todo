@@ -17,24 +17,69 @@
         
         <div class="box-wrapper">
 
-            <div class="boxes">
+            <div class="boxes boxes1">
                 <div class="box-head">
                     <p>Today</p>
                     <!-- <span class="material-icons plus" (click)="openDialog()">add</span> -->
                 </div>
+                <div class="box-body">
+                    <div *ngFor="let item of today" class="box-body-text">
+                        <div class="box-text-check">
+                            <div class="box-check">
+                                <span class="material-icons dn">done</span>
+                            </div>
+                            <p>{{item.content}}</p>
+                        </div>
+
+                        <div class="edit-del">
+                            <span class="material-icons del">delete_outline</span>
+                            <span class="material-icons upd">edit</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="boxes">
+            <div class="boxes boxes2">
                 <div class="box-head">
                     <p>This week</p>
                     <!-- <span class="material-icons plus">add</span> -->
                 </div>
+                <div class="box-body">
+                    <div *ngFor="let item of week" class="box-body-text">
+                        <div class="box-text-check">
+                            <div class="box-check">
+                                <span class="material-icons dn">done</span>
+                            </div>
+                            <p>{{item.content}}</p>
+                        </div>
+
+                        <div class="edit-del">
+                            <span class="material-icons del">delete_outline</span>
+                            <span class="material-icons upd">edit</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="boxes">
+            <div class="boxes boxes3">
                 <div class="box-head">
                     <p>This month</p>
                     <!-- <span class="material-icons plus">add</span> -->
+                </div>
+                <div class="box-body">
+                    <div *ngFor="let item of month" class="box-body-text">
+                        <div class="box-text-check">
+                            <div class="box-check">
+                                <span class="material-icons dn">done</span>
+                            </div>
+                            <p>{{item.content}}</p>
+                        </div>
+
+                        <div class="edit-del">
+                            <span class="material-icons del">delete_outline</span>
+                            <span class="material-icons upd">edit</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 

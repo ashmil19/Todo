@@ -42,20 +42,37 @@ textarea{
 
 .box-wrapper{
     height: 600px;
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
+    gap: 30px; */
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "boxes1 boxes2 boxes3";
+    grid-gap: 30px;
+    padding: 30px 0;
 }
 
+.boxes1{
+    grid-area: boxes1;
+}
+
+.boxes2{
+    grid-area: boxes2;
+}
+
+.boxes3{
+    grid-area: boxes3;
+}
+
+
 .boxes{
-    width: 440px;
-    height: 500px;
     background-color: #1f2937;
     border-radius: 20px;
     padding: 20px;
-
 }
+
 
 .box-head{
     height: 30px;
@@ -174,3 +191,37 @@ textarea{
     background-color: #111827;
     width: 120px;
 }
+
+.box-body{
+    padding-top: 20px;
+}
+
+.box-body-text{
+    display: grid;
+    grid-template-columns: auto 50px;
+    grid-template-areas: "box-text-check edit-del";
+}
+
+.box-text-check{
+    grid-area: box-text-check;
+    display: flex;
+    gap: 5px;
+}
+
+.edit-del{
+    grid-area: edit-del;
+}
+
+
+.box-text-check{
+    display: flex;
+}
+
+.box-text-check p{
+    line-break: anywhere;
+}
+
+.edit-del{
+    display: flex;
+}
+
