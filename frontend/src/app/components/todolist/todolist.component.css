@@ -38,14 +38,12 @@ textarea{
     font-size: 20px;
     font-weight: 700;
     cursor: pointer;
+    outline: none;
 }
 
 .box-wrapper{
-    height: 600px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px; */
+    /* height: auto; */
+    min-height: 600px;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -194,18 +192,24 @@ textarea{
 
 .box-body{
     padding-top: 20px;
+    display: grid;
+    grid-gap: 20px;
 }
 
 .box-body-text{
     display: grid;
     grid-template-columns: auto 50px;
     grid-template-areas: "box-text-check edit-del";
+    background-color: #111827;
+    border-radius: 8px;
+    padding: 20px 10px 20px 20px;
+    grid-gap: 5px;
 }
 
 .box-text-check{
     grid-area: box-text-check;
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
 .edit-del{
@@ -219,9 +223,34 @@ textarea{
 
 .box-text-check p{
     line-break: anywhere;
+    white-space: pre-line;
+    font-size: 18px;
 }
 
 .edit-del{
     display: flex;
+}
+
+.dn{
+    background-color: #111827;
+    color: #111827;
+    border: 1px solid #4b5563;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.box-check, .edit-del{
+    padding-top: 2px;
+}
+
+.upd, .del{
+    cursor: pointer;
+    opacity: 10%;
+}
+
+.upd:hover, .del:hover{
+    opacity: 100%;
 }
 

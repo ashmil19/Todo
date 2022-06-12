@@ -16,6 +16,8 @@ export class TodolistComponent implements OnInit {
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
 
+  isBtnVisible: boolean = false;
+
 
   constructor(public dialog:MatDialog, private api:ApiService) {}
 
