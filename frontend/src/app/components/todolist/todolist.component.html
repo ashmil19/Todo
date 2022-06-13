@@ -103,17 +103,17 @@
 
 <ng-template #dialogRef let-mydata>
     <div class="dialogs">
-        <form >
+        <form #form="ngForm" (ngSubmit)="addTodo(form.value)">
             <div class="dialog-wrap">
                 <div class="dailog-text-input">
                     <p>What do you want to do?</p>
-                    <textarea name="" id="" cols="40" rows="3" autosize ></textarea>
+                    <textarea ngModel name="content" id="" cols="40" rows="3" autosize ></textarea>
                 </div>
                 <div class="dailog-selection">
                     
                     <p>When do you want to do this?</p>
                     <section class="dialog-section">
-                        <mat-button-toggle-group class="dialog-toggles"  name=when aria-label="Font Style">
+                        <mat-button-toggle-group class="dialog-toggles" [(ngModel)]="toggleValue"  name=when aria-label="Font Style">
                             <mat-button-toggle class="dialog-btn-toggle dialog-today" value="TD">Today</mat-button-toggle>
                             <mat-button-toggle class="dialog-btn-toggle dialog-week" value="TW">This Week</mat-button-toggle>
                             <mat-button-toggle class="dialog-btn-toggle dialog-month" value="TM">This Month</mat-button-toggle>

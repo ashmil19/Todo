@@ -20,6 +20,17 @@ export class ApiService {
   getMonth():Observable<object>{
     return this.http.get('http://localhost:3000/month/');
   }
-
   
+
+  postToday(data:any){
+    return this.http.post('http://localhost:3000/today/',data);
+  }
+
+  postWeek(data:any){
+    return this.http.post('http://localhost:3000/week/',data);
+  }
+
+  postMonth(data:any){
+    return this.http.post('http://localhost:3000/month/',data);
+  }
 }
