@@ -99,6 +99,9 @@ textarea{
 .dialogs {
     width: 100%;
     background-color: #111827;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 ::ng-deep.mat-dialog-container {
@@ -167,12 +170,12 @@ textarea{
 
 .dailog-buttons{
     display: flex;
-    gap: 5px;
+    align-items: center;
+    justify-content: center;
 }
 
 .dialog-save-btn, .dialog-close-btn{
-    width: 170px;
-    height: 55px;
+    
     color: white;
     border: none;
     cursor: pointer;
@@ -181,13 +184,21 @@ textarea{
 }
 
 .dialog-save-btn{
+    width: 170px;
+    height: 55px;
     border-radius: 10px;
     background-color: #047857;
 }
 
+.dialog-close-btn-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .dialog-close-btn{
     background-color: #111827;
-    width: 120px;
+    /* width: 100px; */
 }
 
 .box-body{
@@ -253,4 +264,26 @@ textarea{
 .upd:hover, .del:hover{
     opacity: 100%;
 }
+
+.no-todo{
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #9ca3af;
+    gap: 10px;
+}
+
+/* .no-todo-btn{
+    max-width: 100px;
+    padding: 6px 8px;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: #4b5563;
+    border: none;
+    color: white;
+    cursor: pointer;
+} */
 

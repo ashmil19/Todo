@@ -16,40 +16,42 @@ export class TodolistComponent implements OnInit {
   @ViewChild('dialogRef')
   dialogRef!: TemplateRef<any>;
 
-  isBtnVisible: boolean = false;
-
 
   constructor(public dialog:MatDialog, private api:ApiService) {}
 
   ngOnInit(): void {
-    this.getTodayData();
-    this.getWeekData();
-    this.getMonthData();
+    this.getAll();
   }
 
-  today:any;
-  week:any;
-  month:any;
+  today$:any;
+  week$:any;
+  month$:any;
 
   getTodayData(){
     this.api.getToday().subscribe(data =>{
-      this.today = data;
+      this.today$ = data;
     })
   }
 
   getWeekData(){
     this.api.getWeek().subscribe(data =>{
-      this.week = data;
+      this.week$ = data;
     })
   }
 
-  getMonthData(){
+  getMonthData(){ 
     this.api.getMonth().subscribe(data =>{
-      this.month = data;
+      this.month$ = data;
     })
   }
 
-  openDialog(){
+  getAll(){
+    this.getTodayData();
+    this.getWeekData();
+    this.getMonthData();
+  }
+
+  openAddDialog(){
     console.log('open');
     
     const myTempDialog = this.dialog.open(this.dialogRef, {disableClose: true});
@@ -59,10 +61,13 @@ export class TodolistComponent implements OnInit {
     })
   }
 
-  closeDialog(){
+  closeAddDialog(){
     console.log('close');
-    this.dialog.closeAll()
-    
+    this.dialog.closeAll();
   }
+
+  
+  
+  
 
 }

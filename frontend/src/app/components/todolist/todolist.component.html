@@ -1,20 +1,18 @@
-
-
 <body>
     <header>
         <div class="nav"></div>
     </header>
-    
+
     <section>
         <header class="tod-head">
             <div class="tod-date">
                 <p>{{tdy | date:'EEEE, MMMM d'}}</p>
             </div>
             <div class="tod-head-button">
-                <button class="tod-head-add-button" (click)="openDialog()">Add Todo</button>
+                <button class="tod-head-add-button" (click)="openAddDialog()">Add Todo</button>
             </div>
         </header>
-        
+
         <div class="box-wrapper">
 
             <div class="boxes boxes1">
@@ -23,7 +21,10 @@
                     <!-- <span class="material-icons plus" (click)="openDialog()">add</span> -->
                 </div>
                 <div class="box-body">
-                    <div *ngFor="let item of today" class="box-body-text">
+                    <div class="no-todo" *ngIf="today$ == false">
+                        <p>No more todos for <strong>today!</strong></p>
+                    </div>
+                    <div *ngFor="let item of today$" class="box-body-text">
                         <div class="box-text-check">
                             <div class="box-check">
                                 <span class="material-icons dn">done</span>
@@ -45,14 +46,17 @@
                     <!-- <span class="material-icons plus">add</span> -->
                 </div>
                 <div class="box-body">
-                    <div *ngFor="let item of week" class="box-body-text">
+                    <div class="no-todo" *ngIf="week$ == false">
+                        <p>No more todos for <strong>this week!</strong></p>
+                    </div>
+                    <div *ngFor="let item of week$" class="box-body-text">
                         <div class="box-text-check">
                             <div class="box-check">
                                 <span class="material-icons dn">done</span>
                             </div>
                             <p>{{item.content}}</p>
                         </div>
-                        
+
                         <div class="edit-del">
                             <span class="material-icons del">delete_outline</span>
                             <span class="material-icons upd">edit</span>
@@ -67,7 +71,10 @@
                     <!-- <span class="material-icons plus">add</span> -->
                 </div>
                 <div class="box-body">
-                    <div *ngFor="let item of month" class="box-body-text">
+                    <div class="no-todo" *ngIf="month$ == false">
+                        <p>No more todos for <strong>this month!</strong></p>
+                    </div>
+                    <div *ngFor="let item of month$" class="box-body-text">
                         <div class="box-text-check">
                             <div class="box-check">
                                 <span class="material-icons dn">done</span>
@@ -86,9 +93,9 @@
         </div>
 
     </section>
-    
+
     <footer>
-        
+
     </footer>
 
 </body>
@@ -117,10 +124,12 @@
 
                 <div class="dailog-buttons">
                     <button class="dialog-save-btn">Save Todo</button>
-                    <button class="dialog-close-btn" (click)="closeDialog()">Cancel</button>
                 </div>
             </div>
         </form>
+        <div class="dialog-close-btn-wrap">
+            <p class="dialog-close-btn" (click)="closeAddDialog()">Cancel</p>
+        </div>
     </div>
 </ng-template>
 

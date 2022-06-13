@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +9,17 @@ export class ApiService {
 
   constructor( private http:HttpClient ) { }
 
-  getToday(){
+  getToday():Observable<object>{
     return this.http.get('http://localhost:3000/today/');
   }
 
-  getWeek(){
+  getWeek():Observable<object>{
     return this.http.get('http://localhost:3000/week/');
   }
 
-  getMonth(){
+  getMonth():Observable<object>{
     return this.http.get('http://localhost:3000/month/');
   }
+
+  
 }
