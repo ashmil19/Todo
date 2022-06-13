@@ -13,17 +13,23 @@ export class TodolistComponent implements OnInit {
 
   tdy: Date = new Date();
 
-  @ViewChild('dialogRef')
-  dialogRef!: TemplateRef<any>;
+  @ViewChild('dialogAddRef')
+  dialogAddRef!: TemplateRef<any>;
 
-  toggleValue="TD";
-
+  @ViewChild('dialogUpdateRef')
+  dialogUpdateRef!: TemplateRef<any>;
 
   constructor(public dialog: MatDialog, private api: ApiService) { }
 
   ngOnInit(): void {
     this.getAll();
   }
+
+
+
+
+
+  // get todo methods
 
   today$: any;
   week$: any;
@@ -53,26 +59,33 @@ export class TodolistComponent implements OnInit {
     this.getMonthData();
   }
 
-  openAddDialog() {
-    console.log('open');
+  // add button dialog function
 
-    const myTempDialog = this.dialog.open(this.dialogRef, { disableClose: true });
+  openAddDialog() {
+    console.log('add open');
+
+    const myTempDialog = this.dialog.open(this.dialogAddRef, { disableClose: true });
     myTempDialog.afterClosed().subscribe(() => {
       console.log('closed');
 
     })
   }
 
-  closeAddDialog() {
+  closeDialog() {
     console.log('close');
     this.dialog.closeAll();
   }
 
+
+  // post todo method
+
+  toggleValue = "TD";
+
   addTodo(form: any) {
     console.log(form);
 
-    if(form.when == "TD"){
-      this.api.postToday(form).subscribe(data =>{
+    if (form.when == "TD") {
+      this.api.postToday(form).subscribe(data => {
         console.log(data);
         this.getAll();
         this.dialog.closeAll();
@@ -80,16 +93,16 @@ export class TodolistComponent implements OnInit {
       return;
     }
 
-    if(form.when == "TW"){
-      this.api.postWeek(form).subscribe(data =>{
+    if (form.when == "TW") {
+      this.api.postWeek(form).subscribe(data => {
         console.log(data);
         this.getAll()
         this.dialog.closeAll();
       })
     }
 
-    if(form.when == "TM"){
-      this.api.postMonth(form).subscribe(data =>{
+    if (form.when == "TM") {
+      this.api.postMonth(form).subscribe(data => {
         console.log(data);
         this.getAll()
         this.dialog.closeAll();
@@ -98,7 +111,29 @@ export class TodolistComponent implements OnInit {
 
   }
 
+  // update button dailog function 
+
+  updateData:any;
+
+  openUpdateDailog(form:any) {
+    console.log('update open');
+    this.updateData = form;
+    console.log('upda',this.updateData);
+    
+    const myTempDialog = this.dialog.open(this.dialogUpdateRef, {disableClose:true, data:form});
+    myTempDialog.afterOpened().subscribe(()=>{
+      console.log('update dialog open');
+      
+    })
+  }
 
 
-  
+  // todo put method
+
+  updateTodo(form:any){
+    console.log(form);
+    
+  }
+
+
 }
