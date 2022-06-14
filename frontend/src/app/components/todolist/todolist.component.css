@@ -287,3 +287,36 @@ textarea{
     cursor: pointer;
 } */
 
+
+.wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.del-text p{
+    letter-spacing: 1px;
+}
+
+.del-dailog-buttons{
+    display: flex;
+}
+
+.del-btn, .del-cancel-btn{
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.del-btn{
+    background-color: #047857;
+}
+
+.del-cancel-btn{
+    background-color: #111827;
+}

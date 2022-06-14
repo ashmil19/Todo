@@ -19,6 +19,9 @@ export class TodolistComponent implements OnInit {
   @ViewChild('dialogUpdateRef')
   dialogUpdateRef!: TemplateRef<any>;
 
+  @ViewChild('dialogDeleteRef')
+  dialogDeleteRef!: TemplateRef<any>;
+
   constructor(public dialog: MatDialog, private api: ApiService) { }
 
   ngOnInit(): void {
@@ -114,7 +117,7 @@ export class TodolistComponent implements OnInit {
 
   formData:any;
 
-  openUpdateDailog(form:any) {
+  openUpdateDialog(form:any) {
     console.log('update open');
     this.formData = form;
     console.log('upda',this.formData);
@@ -165,6 +168,22 @@ export class TodolistComponent implements OnInit {
     }
     
     
+  }
+
+
+  // delete button dialog function
+
+  
+
+  openDeleteDialog(form:any){
+    console.log(form);
+    
+
+    const myTempDialog = this.dialog.open(this.dialogDeleteRef);
+    myTempDialog.afterOpened().subscribe(() =>{
+      console.log('delete');
+      
+    })
   }
 
 
