@@ -90,7 +90,6 @@ export class TodolistComponent implements OnInit {
         this.getAll();
         this.dialog.closeAll();
       })
-      return;
     }
 
     if (form.when == "TW") {
@@ -113,25 +112,58 @@ export class TodolistComponent implements OnInit {
 
   // update button dailog function 
 
-  updateData:any;
+  formData:any;
 
   openUpdateDailog(form:any) {
     console.log('update open');
-    this.updateData = form;
-    console.log('upda',this.updateData);
+    this.formData = form;
+    console.log('upda',this.formData);
     
-    const myTempDialog = this.dialog.open(this.dialogUpdateRef, {disableClose:true, data:form});
+    const myTempDialog = this.dialog.open(this.dialogUpdateRef, {disableClose:true, data:this.formData});
     myTempDialog.afterOpened().subscribe(()=>{
       console.log('update dialog open');
       
     })
+
   }
 
 
   // todo put method
 
   updateTodo(form:any){
-    console.log(form);
+    console.log('form',form);
+    console.log('formData',this.formData);
+
+    
+    if(this.formData.when == form.when){
+
+      const updateData = this.formData;
+      updateData.content = form.content;
+      updateData.when = form.when;
+
+      if(updateData.when == 'TD'){
+        this.api.putToday(updateData.id,updateData).subscribe(dat =>{
+          console.log(dat);
+          this.dialog.closeAll();
+        })
+      }
+  
+      if(updateData.when == 'TW'){
+        this.api.putWeek(updateData.id,updateData).subscribe(dat =>{
+          console.log(dat);
+          this.dialog.closeAll();
+        })
+      }
+  
+      if(updateData.when == 'TM'){
+        this.api.putMonth(updateData.id,updateData).subscribe(dat =>{
+          console.log(dat);
+          this.dialog.closeAll();
+        })
+      }
+
+    }
+    
     
   }
 

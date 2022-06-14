@@ -2,7 +2,7 @@
   "today": [
     {
       "id": 1,
-      "content": "tody",
+      "content": "today",
       "when": "TD",
       "isDone": true
     },
@@ -13,32 +13,10 @@
       "isDone": false
     },
     {
+      "content": "ashmil todya",
+      "when": "TD",
       "id": 3,
-      "content": "skhfasjfksjdjflajfdkaldkfljal;kfd;asj'fdljdfa",
-      "when": "TD",
       "isDone": false
-    },
-    {
-      "id": 4,
-      "content": "mffjidkasjfksjdjflajfdkaldkfljal;kfd;asj'fdljdfa",
-      "when": "TD",
-      "isDone": true
-    },
-    {
-      "id": 5,
-      "content": "fksjdjflajfdkaldkfljal;kfd;asj'fdljdfa",
-      "when": "TD",
-      "isDone": false
-    },
-    {
-      "content": "faldsjflakf",
-      "when": "TD",
-      "id": 6
-    },
-    {
-      "content": "sdijfajsd",
-      "when": "TD",
-      "id": 7
     }
   ],
   "week": [
@@ -55,19 +33,22 @@
       "isDone": false
     },
     {
+      "id": 3,
       "content": "ljfdalkjal",
       "when": "TW",
-      "id": 3
+      "isDone": false
     },
     {
+      "id": 4,
       "content": "ldsjalkf",
       "when": "TW",
-      "id": 4
+      "isDone": false
     },
     {
+      "id": 5,
       "content": "asldfjlajldfjaod",
       "when": "TW",
-      "id": 5
+      "isDone": false
     }
   ],
   "month": [
@@ -75,7 +56,7 @@
       "id": 1,
       "content": "month",
       "when": "TM",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": 2,
@@ -84,14 +65,22 @@
       "isDone": false
     },
     {
+      "id": 3,
       "content": "asjdflakjdfladflka",
       "when": "TM",
-      "id": 3
+      "isDone": false
     },
     {
+      "id": 4,
       "content": "kdskjakds\n",
       "when": "TM",
-      "id": 4
+      "isDone": false
+    },
+    {
+      "content": "asldkjsal",
+      "when": "TM",
+      "id": 5,
+      "isDone": false
     }
   ]
 }

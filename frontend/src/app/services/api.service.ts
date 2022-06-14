@@ -9,6 +9,8 @@ export class ApiService {
 
   constructor( private http:HttpClient ) { }
 
+  // get api
+
   getToday():Observable<object>{
     return this.http.get('http://localhost:3000/today/');
   }
@@ -21,6 +23,7 @@ export class ApiService {
     return this.http.get('http://localhost:3000/month/');
   }
   
+  // post api
 
   postToday(data:any){
     return this.http.post('http://localhost:3000/today/',data);
@@ -33,4 +36,19 @@ export class ApiService {
   postMonth(data:any){
     return this.http.post('http://localhost:3000/month/',data);
   }
+
+  // put api
+
+  putToday(id:number,data:any){
+    return this.http.put('http://localhost:3000/today/'+id,data);
+  }
+
+  putWeek(id:number,data:any){
+    return this.http.put('http://localhost:3000/week/'+id,data);
+  }
+
+  putMonth(id:number,data:any){
+    return this.http.put('http://localhost:3000/month/'+id,data);
+  }
+
 }
