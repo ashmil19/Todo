@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,13 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   constructor( private http:HttpClient ) { }
+
+
+  private _refreshrequired = new Subject<void>();
+
+  get refreshRequired(){
+    return this._refreshrequired;
+  }
 
   // get api
 
@@ -22,20 +29,36 @@ export class ApiService {
   getMonth():Observable<object>{
     return this.http.get('http://localhost:3000/month/');
   }
+
+  
   
   // post api
 
   postToday(data:any){
-    return this.http.post('http://localhost:3000/today/',data);
+    return this.http.post('http://localhost:3000/today/',data).pipe(
+      tap(()=>{
+        this.refreshRequired.next();
+      })
+    );
   }
 
   postWeek(data:any){
-    return this.http.post('http://localhost:3000/week/',data);
+    return this.http.post('http://localhost:3000/week/',data).pipe(
+      tap(()=>{
+        this.refreshRequired.next();
+      })
+    );
   }
 
   postMonth(data:any){
-    return this.http.post('http://localhost:3000/month/',data);
+    return this.http.post('http://localhost:3000/month/',data).pipe(
+      tap(()=>{
+        this.refreshRequired.next();
+      })
+    );
   }
+
+
 
   // put api
 
@@ -51,18 +74,32 @@ export class ApiService {
     return this.http.put('http://localhost:3000/month/'+id,data);
   }
 
+
+
   // delete api
 
   deleteToday(id:number){
-    return this.http.delete('http://localhost:3000/today/'+id);
+    return this.http.delete('http://localhost:3000/today/'+id).pipe(
+      tap(()=>{
+        this.refreshRequired.next();
+      })
+    );
   }
 
   deleteWeek(id:number){
-    return this.http.delete('http://localhost:3000/week/'+id);
+    return this.http.delete('http://localhost:3000/week/'+id).pipe(
+      tap(()=>{
+        this.refreshRequired.next();
+      })
+    );
   }
 
   deleteMonth(id:number){
-    return this.http.delete('http://localhost:3000/month/'+id);
+    return this.http.delete('http://localhost:3000/month/'+id).pipe(
+      tap(()=>{
+        this.refreshRequired.next();
+      })
+    );
   }
 
 }

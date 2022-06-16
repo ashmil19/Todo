@@ -26,6 +26,10 @@ export class TodolistComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+
+    this.api.refreshRequired.subscribe(resp =>{
+      this.getAll(); 
+    })
   }
 
 
@@ -87,28 +91,29 @@ export class TodolistComponent implements OnInit {
   addTodo(form: any) {
     console.log(form);
 
-    if (form.when == "TD") {
-      this.api.postToday(form).subscribe(data => {
-        console.log(data);
-        this.getAll();
-        this.dialog.closeAll();
-      })
-    }
+    if(form.content != ""){
 
-    if (form.when == "TW") {
-      this.api.postWeek(form).subscribe(data => {
-        console.log(data);
-        this.getAll()
+      if (form.when == "TD") {
         this.dialog.closeAll();
-      })
-    }
+        this.api.postToday(form).subscribe(data => {
+          console.log(data);
+        })
+      }
+  
+      if (form.when == "TW") {
+        this.dialog.closeAll();
+        this.api.postWeek(form).subscribe(data => {
+          console.log(data);
+        })
+      }
+  
+      if (form.when == "TM") {
+        this.dialog.closeAll();
+        this.api.postMonth(form).subscribe(data => {
+          console.log(data);
+        })
+      }
 
-    if (form.when == "TM") {
-      this.api.postMonth(form).subscribe(data => {
-        console.log(data);
-        this.getAll()
-        this.dialog.closeAll();
-      })
     }
 
   }
@@ -137,35 +142,39 @@ export class TodolistComponent implements OnInit {
     console.log('form', form);
     console.log('formData', this.formData);
 
+    if(form.content != ""){
 
-    if (this.formData.when == form.when) {
-
-      const updateData = this.formData;
-      updateData.content = form.content;
-      updateData.when = form.when;
-
-      if (updateData.when == 'TD') {
-        this.api.putToday(updateData.id, updateData).subscribe(dat => {
-          console.log(dat);
+      if (this.formData.when == form.when) {
+  
+        const updateData = this.formData;
+        updateData.content = form.content;
+        updateData.when = form.when;
+  
+        if (updateData.when == 'TD') {
           this.dialog.closeAll();
-        })
-      }
-
-      if (updateData.when == 'TW') {
-        this.api.putWeek(updateData.id, updateData).subscribe(dat => {
-          console.log(dat);
+          this.api.putToday(updateData.id, updateData).subscribe(dat => {
+            console.log(dat);
+          })
+        }
+  
+        if (updateData.when == 'TW') {
           this.dialog.closeAll();
-        })
-      }
-
-      if (updateData.when == 'TM') {
-        this.api.putMonth(updateData.id, updateData).subscribe(dat => {
-          console.log(dat);
+          this.api.putWeek(updateData.id, updateData).subscribe(dat => {
+            console.log(dat);
+          })
+        }
+  
+        if (updateData.when == 'TM') {
           this.dialog.closeAll();
-        })
+          this.api.putMonth(updateData.id, updateData).subscribe(dat => {
+            console.log(dat);
+          })
+        }
+  
       }
 
     }
+
 
 
   }
