@@ -115,17 +115,17 @@ export class TodolistComponent implements OnInit {
 
   // update button dailog function 
 
-  formData:any;
+  formData: any;
 
-  openUpdateDialog(form:any) {
+  openUpdateDialog(form: any) {
     console.log('update open');
     this.formData = form;
-    console.log('upda',this.formData);
-    
-    const myTempDialog = this.dialog.open(this.dialogUpdateRef, {disableClose:true, data:this.formData});
-    myTempDialog.afterOpened().subscribe(()=>{
+    console.log('upda', this.formData);
+
+    const myTempDialog = this.dialog.open(this.dialogUpdateRef, { disableClose: true, data: this.formData });
+    myTempDialog.afterOpened().subscribe(() => {
       console.log('update dialog open');
-      
+
     })
 
   }
@@ -133,57 +133,65 @@ export class TodolistComponent implements OnInit {
 
   // todo put method
 
-  updateTodo(form:any){
-    console.log('form',form);
-    console.log('formData',this.formData);
+  updateTodo(form: any) {
+    console.log('form', form);
+    console.log('formData', this.formData);
 
-    
-    if(this.formData.when == form.when){
+
+    if (this.formData.when == form.when) {
 
       const updateData = this.formData;
       updateData.content = form.content;
       updateData.when = form.when;
 
-      if(updateData.when == 'TD'){
-        this.api.putToday(updateData.id,updateData).subscribe(dat =>{
+      if (updateData.when == 'TD') {
+        this.api.putToday(updateData.id, updateData).subscribe(dat => {
           console.log(dat);
           this.dialog.closeAll();
         })
       }
-  
-      if(updateData.when == 'TW'){
-        this.api.putWeek(updateData.id,updateData).subscribe(dat =>{
+
+      if (updateData.when == 'TW') {
+        this.api.putWeek(updateData.id, updateData).subscribe(dat => {
           console.log(dat);
           this.dialog.closeAll();
         })
       }
-  
-      if(updateData.when == 'TM'){
-        this.api.putMonth(updateData.id,updateData).subscribe(dat =>{
+
+      if (updateData.when == 'TM') {
+        this.api.putMonth(updateData.id, updateData).subscribe(dat => {
           console.log(dat);
           this.dialog.closeAll();
         })
       }
 
     }
-    
-    
+
+
   }
 
 
   // delete button dialog function
 
-  
+  deleteData: any;
 
-  openDeleteDialog(form:any){
+  openDeleteDialog(form: any) {
     console.log(form);
-    
+    this.deleteData = form;
+
 
     const myTempDialog = this.dialog.open(this.dialogDeleteRef);
-    myTempDialog.afterOpened().subscribe(() =>{
+    myTempDialog.afterOpened().subscribe(() => {
       console.log('delete');
-      
+
     })
+  }
+
+
+  // todo delete method
+
+  deleteTodo() {
+    console.warn('delete');
   }
 
 

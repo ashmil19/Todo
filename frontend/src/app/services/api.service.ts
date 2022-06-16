@@ -51,4 +51,18 @@ export class ApiService {
     return this.http.put('http://localhost:3000/month/'+id,data);
   }
 
+  // delete api
+
+  deleteToday(id:number){
+    return this.http.delete('http://localhost:3000/today/'+id);
+  }
+
+  deleteWeek(id:number){
+    return this.http.delete('http://localhost:3000/week/'+id);
+  }
+
+  deleteMonth(id:number){
+    return this.http.delete('http://localhost:3000/month/'+id);
+  }
+
 }
