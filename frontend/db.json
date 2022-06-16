@@ -43,12 +43,6 @@
       "content": "ldsjalkf",
       "when": "TW",
       "isDone": false
-    },
-    {
-      "id": 5,
-      "content": "asldfjlajldfjaod",
-      "when": "TW",
-      "isDone": false
     }
   ],
   "month": [
@@ -74,12 +68,6 @@
       "id": 4,
       "content": "kdskjakds\n",
       "when": "TM",
-      "isDone": false
-    },
-    {
-      "content": "asldkjsal",
-      "when": "TM",
-      "id": 5,
       "isDone": false
     }
   ]

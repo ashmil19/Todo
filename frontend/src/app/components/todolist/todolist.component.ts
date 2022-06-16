@@ -173,14 +173,12 @@ export class TodolistComponent implements OnInit {
 
   // delete button dialog function
 
-  deleteData: any;
 
   openDeleteDialog(form: any) {
     console.log(form);
-    this.deleteData = form;
 
 
-    const myTempDialog = this.dialog.open(this.dialogDeleteRef);
+    const myTempDialog = this.dialog.open(this.dialogDeleteRef, { data: form });
     myTempDialog.afterOpened().subscribe(() => {
       console.log('delete');
 
@@ -190,8 +188,29 @@ export class TodolistComponent implements OnInit {
 
   // todo delete method
 
-  deleteTodo() {
-    console.warn('delete');
+  deleteTodo(dlt: any) {
+    console.log(dlt);
+
+    if (dlt.when == 'TD') {
+      this.api.deleteToday(dlt.id).subscribe(data => {
+        console.log(data);
+        this.dialog.closeAll();
+      })
+    }
+
+    if (dlt.when == 'TW') {
+      this.api.deleteWeek(dlt.id).subscribe(data => {
+        console.log(data);
+        this.dialog.closeAll();
+      })
+    }
+
+    if (dlt.when == 'TM') {
+      this.api.deleteMonth(dlt.id).subscribe(data => {
+        console.log(data);
+        this.dialog.closeAll();
+      })
+    }
   }
 
 
