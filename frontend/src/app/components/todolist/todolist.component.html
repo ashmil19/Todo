@@ -24,19 +24,39 @@
                     <div class="no-todo" *ngIf="today$ == false">
                         <p>No more todos for <strong>today!</strong></p>
                     </div>
-                    <div *ngFor="let item of today$" class="box-body-text">
-                        <div class="box-text-check">
-                            <div class="box-check">
-                                <span class="material-icons dn">done</span>
+
+                    <div *ngFor="let item of today$">
+
+                        <div class="box-body-text"  *ngIf="item.isDone == false">
+                            <div class="box-text-check">
+                                <div class="box-check">
+                                    <span class="material-icons dn" (click)="changeIsDone(item)">done</span>
+                                </div>
+                                <p>{{item.content}}</p>
                             </div>
-                            <p>{{item.content}}</p>
+    
+                            <div class="edit-del">
+                                <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
+                                <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                            </div>
                         </div>
 
-                        <div class="edit-del">
-                            <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
-                            <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                        <div class="box-body-text box-body-text-checked"  *ngIf="item.isDone == true">
+                            <div class="box-text-check">
+                                <div class="box-check">
+                                    <span class="material-icons dn dn-checked" (click)="changeIsDone(item)">done</span>
+                                </div>
+                                <del>{{item.content}}</del>
+                            </div>
+    
+                            <div class="edit-del">
+                                <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
+                                <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                            </div>
                         </div>
+                        
                     </div>
+
                 </div>
             </div>
 
@@ -49,19 +69,39 @@
                     <div class="no-todo" *ngIf="week$ == false">
                         <p>No more todos for <strong>this week!</strong></p>
                     </div>
-                    <div *ngFor="let item of week$" class="box-body-text">
-                        <div class="box-text-check">
-                            <div class="box-check">
-                                <span class="material-icons dn">done</span>
+
+                    <div *ngFor="let item of week$">
+
+                        <div class="box-body-text"  *ngIf="item.isDone == false">
+                            <div class="box-text-check">
+                                <div class="box-check">
+                                    <span class="material-icons dn" (click)="changeIsDone(item)">done</span>
+                                </div>
+                                <p>{{item.content}}</p>
                             </div>
-                            <p>{{item.content}}</p>
+    
+                            <div class="edit-del">
+                                <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
+                                <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                            </div>
                         </div>
 
-                        <div class="edit-del">
-                            <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
-                            <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                        <div class="box-body-text box-body-text-checked"  *ngIf="item.isDone == true">
+                            <div class="box-text-check">
+                                <div class="box-check">
+                                    <span class="material-icons dn dn-checked" (click)="changeIsDone(item)">done</span>
+                                </div>
+                                <del>{{item.content}}</del>
+                            </div>
+    
+                            <div class="edit-del">
+                                <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
+                                <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                            </div>
                         </div>
+                        
                     </div>
+
                 </div>
             </div>
 
@@ -74,19 +114,39 @@
                     <div class="no-todo" *ngIf="month$ == false">
                         <p>No more todos for <strong>this month!</strong></p>
                     </div>
-                    <div *ngFor="let item of month$" class="box-body-text">
-                        <div class="box-text-check">
-                            <div class="box-check">
-                                <span class="material-icons dn">done</span>
+
+                    <div *ngFor="let item of month$">
+
+                        <div class="box-body-text"  *ngIf="item.isDone == false">
+                            <div class="box-text-check">
+                                <div class="box-check">
+                                    <span class="material-icons dn" (click)="changeIsDone(item)">done</span>
+                                </div>
+                                <p>{{item.content}}</p>
                             </div>
-                            <p>{{item.content}}</p>
+    
+                            <div class="edit-del">
+                                <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
+                                <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                            </div>
                         </div>
 
-                        <div class="edit-del">
-                            <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
-                            <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                        <div class="box-body-text box-body-text-checked"  *ngIf="item.isDone == true">
+                            <div class="box-text-check">
+                                <div class="box-check">
+                                    <span class="material-icons dn dn-checked" (click)="changeIsDone(item)">done</span>
+                                </div>
+                                <del>{{item.content}}</del>
+                            </div>
+    
+                            <div class="edit-del">
+                                <span class="material-icons upd" (click)="openUpdateDialog(item)">edit</span>
+                                <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
+                            </div>
                         </div>
+                        
                     </div>
+
                 </div>
             </div>
 
@@ -144,7 +204,7 @@
             <div class="dialog-wrap">
                 <div class="dailog-text-input">
                     <p>What do you want to do?</p>
-                    <textarea [ngModel]="mydata.content" ngModel  name="content" id="" cols="40" rows="3" autosize ></textarea>
+                    <textarea [ngModel]="mydata.content"  name="content" id="" cols="40" rows="3" autosize ></textarea>
                 </div>
                 <div class="dailog-selection">
                     

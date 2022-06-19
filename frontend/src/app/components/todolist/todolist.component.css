@@ -320,3 +320,30 @@ textarea{
 .del-cancel-btn{
     background-color: #111827;
 }
+
+.box-body-text-checked{
+    display: grid;
+    grid-template-columns: auto 50px;
+    grid-template-areas: "box-text-check edit-del";
+    border-radius: 8px;
+    padding: 20px 10px 20px 20px;
+    grid-gap: 5px;
+    background-color: #161e2d;
+}
+
+.box-text-check del{
+    color: #6b7280;
+    line-break: anywhere;
+    white-space: pre-line;
+    font-size: 18px;
+}
+
+.dn-checked{
+    /* border: 1px solid #4b5563; */
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 22px;
+    color: #047857;
+    background-color: #10b981;
+}

@@ -27,8 +27,8 @@ export class TodolistComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
 
-    this.api.refreshRequired.subscribe(resp =>{
-      this.getAll(); 
+    this.api.refreshRequired.subscribe(resp => {
+      this.getAll();
     })
   }
 
@@ -91,7 +91,7 @@ export class TodolistComponent implements OnInit {
   addTodo(form: any) {
     console.log(form);
 
-    if(form.content != ""){
+    if (form.content != "") {
 
       if (form.when == "TD") {
         this.dialog.closeAll();
@@ -99,14 +99,14 @@ export class TodolistComponent implements OnInit {
           console.log(data);
         })
       }
-  
+
       if (form.when == "TW") {
         this.dialog.closeAll();
         this.api.postWeek(form).subscribe(data => {
           console.log(data);
         })
       }
-  
+
       if (form.when == "TM") {
         this.dialog.closeAll();
         this.api.postMonth(form).subscribe(data => {
@@ -142,35 +142,35 @@ export class TodolistComponent implements OnInit {
     console.log('form', form);
     console.log('formData', this.formData);
 
-    if(form.content != ""){
+    if (form.content != "") {
 
       if (this.formData.when == form.when) {
-  
+
         const updateData = this.formData;
         updateData.content = form.content;
         updateData.when = form.when;
-  
+
         if (updateData.when == 'TD') {
           this.dialog.closeAll();
           this.api.putToday(updateData.id, updateData).subscribe(dat => {
             console.log(dat);
           })
         }
-  
+
         if (updateData.when == 'TW') {
           this.dialog.closeAll();
           this.api.putWeek(updateData.id, updateData).subscribe(dat => {
             console.log(dat);
           })
         }
-  
+
         if (updateData.when == 'TM') {
           this.dialog.closeAll();
           this.api.putMonth(updateData.id, updateData).subscribe(dat => {
             console.log(dat);
           })
         }
-  
+
       }
 
     }
@@ -220,6 +220,52 @@ export class TodolistComponent implements OnInit {
         this.dialog.closeAll();
       })
     }
+  }
+
+
+  // change isdone function
+
+  todoIsDone(form:any){
+
+
+    if(form.when == 'TD'){
+      this.api.putToday(form.id,form).subscribe(tData =>{
+        console.log(tData);
+      })
+    }
+
+    if(form.when == 'TW'){
+      this.api.putWeek(form.id,form).subscribe(wData =>{
+        console.log(wData);
+      })
+    }
+
+    if(form.when == 'TM'){
+      this.api.putMonth(form.id,form).subscribe(mData =>{
+        console.log(mData);
+      })
+    }
+
+    
+
+  }
+
+
+  changeIsDone(form: any) {
+    console.log(form);
+
+    if (form.isDone == true) {
+      form.isDone = false;
+      this.todoIsDone(form);
+      return;
+    }
+    
+    if (form.isDone == false) {
+      form.isDone = true;
+      this.todoIsDone(form);
+      return;
+    }
+
   }
 
 
