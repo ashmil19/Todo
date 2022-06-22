@@ -4,7 +4,7 @@
       "id": 1,
       "content": "todaya",
       "when": "TD",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": 2,
@@ -13,28 +13,16 @@
       "isDone": false
     },
     {
-      "content": "helooshfa",
-      "when": "TD",
-      "id": 3,
-      "isDone": true
-    },
-    {
       "content": "djfal",
       "when": "TD",
       "id": 4,
       "isDone": false
     },
     {
-      "content": "eakmdlaksjf",
+      "content": "ashmil\n",
       "when": "TD",
       "id": 5,
       "isDone": false
-    },
-    {
-      "content": "kai sl",
-      "when": "TD",
-      "id": 7,
-      "isDone": true
     }
   ],
   "week": [
@@ -48,25 +36,24 @@
       "id": 2,
       "content": "asdihdskdajflajfldkjalfdlaldfalfdkalkfadfjlajsdfkljasldfja",
       "when": "TW",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": 3,
       "content": "ljfdalkjal",
       "when": "TW",
-      "isDone": false
+      "isDone": true
     },
     {
       "content": "sadam",
       "when": "TW",
       "id": 4,
-      "isDone": true
+      "isDone": false
     },
     {
-      "content": "d",
+      "content": "sdffda",
       "when": "TW",
-      "id": 5,
-      "isDone": true
+      "id": 6
     }
   ],
   "month": [
@@ -80,18 +67,6 @@
       "id": 2,
       "content": "snocssdsadjflajfdlkjakljdfkakdfjaldflakjkfakfjlfjkdjfkasjkfjksdjfjjfe",
       "when": "TM",
-      "isDone": false
-    },
-    {
-      "id": 3,
-      "content": "asjdflakjdfladflka",
-      "when": "TM",
-      "isDone": true
-    },
-    {
-      "content": "helo monnth\nosdfjsl",
-      "when": "TM",
-      "id": 4,
       "isDone": false
     },
     {

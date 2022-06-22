@@ -248,7 +248,7 @@ export class TodolistComponent implements OnInit {
 
     
 
-  }
+  } 
 
 
   changeIsDone(form: any) {
@@ -268,5 +268,5 @@ export class TodolistComponent implements OnInit {
 
   }
 
-
 }
+
