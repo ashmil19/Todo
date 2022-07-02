@@ -25,10 +25,12 @@ export class TodolistComponent implements OnInit {
   constructor(public dialog: MatDialog, private api: ApiService) { }
 
   ngOnInit(): void {
-    this.getAll();
+    // this.getAll();
+    this.getTodoData();
 
     this.api.refreshRequired.subscribe(resp => {
-      this.getAll();
+      // this.getAll();
+      this.getTodoData();
     })
   }
 
@@ -38,32 +40,67 @@ export class TodolistComponent implements OnInit {
 
   // get todo methods
 
-  today$: any;
-  week$: any;
-  month$: any;
+  today$: any[] = [];
+  week$: any[] = [];
+  month$: any[] = [];
 
-  getTodayData() {
-    this.api.getToday().subscribe(data => {
-      this.today$ = data;
-    })
-  }
+  // getTodayData() {
+  //   this.api.getToday().subscribe(data => {
+  //     this.today$ = data;
+  //   })
+  // }
 
-  getWeekData() {
-    this.api.getWeek().subscribe(data => {
-      this.week$ = data;
-    })
-  }
+  // getWeekData() {
+  //   this.api.getWeek().subscribe(data => {
+  //     this.week$ = data;
+  //   })
+  // }
 
-  getMonthData() {
-    this.api.getMonth().subscribe(data => {
-      this.month$ = data;
+  // getMonthData() {
+  //   this.api.getMonth().subscribe(data => {
+  //     this.month$ = data;
+  //   })
+  // }
+
+  // get todo data method
+
+  getTodoData(){
+    this.api.getTodo().subscribe(data =>{
+      this.checkTodoSection(data);
+      
     })
   }
 
   getAll() {
-    this.getTodayData();
-    this.getWeekData();
-    this.getMonthData();
+    // this.getTodayData();
+    // this.getWeekData();
+    // this.getMonthData();
+    
+  }
+
+  checkTodoSection(value:any){
+    
+    
+    value.forEach((val:any) => {
+      
+      if(val.when == 'TD'){
+        this.today$.push(val);
+      }
+
+      if(val.when == 'TW'){
+        this.week$.push(val);
+      }
+  
+      if(val.when == 'TM'){
+        this.month$.push(val);
+      } 
+      
+    });
+
+    
+    
+
+      
   }
 
   // add button dialog function

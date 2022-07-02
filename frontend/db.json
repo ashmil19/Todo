@@ -36,7 +36,7 @@
       "id": 2,
       "content": "asdihdskdajflajfldkjalfdlaldfalfdkalkfadfjlajsdfkljasldfja",
       "when": "TW",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": 3,
@@ -61,7 +61,7 @@
       "id": 1,
       "content": "month",
       "when": "TM",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": 2,
@@ -73,6 +73,44 @@
       "content": "ahi;",
       "when": "TM",
       "id": 5,
+      "isDone": true
+    }
+  ],
+  "todo": [
+    {
+      "id": 1,
+      "content": "month",
+      "when": "TM",
+      "isDone": false
+    },
+    {
+      "id": 2,
+      "content": "adsas",
+      "when": "TM",
+      "isDone": true
+    },
+    {
+      "id": 3,
+      "content": "snocssdsadjflajfdlkjakljdfkakdfjaldflakjkfakfjlfjkdjfkasjkfjksdjfjjfe",
+      "when": "TD",
+      "isDone": true
+    },
+    {
+      "id": 4,
+      "content": "gsdfgfd",
+      "when": "TD",
+      "isDone": false
+    },
+    {
+      "id": 5,
+      "content": "ahi;",
+      "when": "TW",
+      "isDone": false
+    },
+    {
+      "id": 6,
+      "content": "aasdbvhi;",
+      "when": "TW",
       "isDone": true
     }
   ]
