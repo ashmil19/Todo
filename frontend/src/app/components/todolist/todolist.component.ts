@@ -28,12 +28,11 @@ export class TodolistComponent implements OnInit {
     // this.getAll();
     this.getTodoData();
 
-    this.api.refreshRequired.subscribe(resp => {
-      // this.getAll();
-      this.getTodoData();
-    })
+    // this.api.refreshRequired.subscribe(resp => {
+    //   // this.getAll();
+    //   this.getTodoData();
+    // })
   }
-
 
 
 
@@ -111,7 +110,6 @@ export class TodolistComponent implements OnInit {
     const myTempDialog = this.dialog.open(this.dialogAddRef, { disableClose: true });
     myTempDialog.afterClosed().subscribe(() => {
       console.log('closed');
-
     })
   }
 
@@ -123,6 +121,7 @@ export class TodolistComponent implements OnInit {
 
   // post todo method
 
+  
   toggleValue = "TD";
 
   addTodo(form: any) {
@@ -130,26 +129,31 @@ export class TodolistComponent implements OnInit {
 
     if (form.content != "") {
 
-      if (form.when == "TD") {
-        this.dialog.closeAll();
-        this.api.postToday(form).subscribe(data => {
-          console.log(data);
-        })
-      }
+      // if (form.when == "TD") {
+      //   this.dialog.closeAll();
+      //   this.api.postToday(form).subscribe(data => {
+      //     console.log(data);
+      //   })
+      // }
 
-      if (form.when == "TW") {
-        this.dialog.closeAll();
-        this.api.postWeek(form).subscribe(data => {
-          console.log(data);
-        })
-      }
+      // if (form.when == "TW") {
+      //   this.dialog.closeAll();
+      //   this.api.postWeek(form).subscribe(data => {
+      //     console.log(data);
+      //   })
+      // }
 
-      if (form.when == "TM") {
-        this.dialog.closeAll();
-        this.api.postMonth(form).subscribe(data => {
-          console.log(data);
-        })
-      }
+      // if (form.when == "TM") {
+      //   this.dialog.closeAll();
+      //   this.api.postMonth(form).subscribe(data => {
+      //     console.log(data);
+      //   })
+      // }
+
+      this.dialog.closeAll();
+      this.api.postTodo(form).subscribe(data =>{
+        console.log(data);
+      })
 
     }
 

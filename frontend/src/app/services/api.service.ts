@@ -111,5 +111,10 @@ export class ApiService {
     return this.http.get(this.api_link);
   }
 
+  //  todo post api
+
+  postTodo(data: any) {
+    return this.http.post(this.api_link, data)
+  }
 
 }
