@@ -63,10 +63,10 @@ export class TodolistComponent implements OnInit {
 
   // get todo data method
 
-  getTodoData(){
-    this.api.getTodo().subscribe(data =>{
+  getTodoData() {
+    this.api.getTodo().subscribe(data => {
       this.checkTodoSection(data);
-      
+
     })
   }
 
@@ -74,31 +74,31 @@ export class TodolistComponent implements OnInit {
     // this.getTodayData();
     // this.getWeekData();
     // this.getMonthData();
-    
+
   }
 
-  checkTodoSection(value:any){
-    
-    
-    value.forEach((val:any) => {
-      
-      if(val.when == 'TD'){
+  checkTodoSection(value: any) {
+
+
+    value.forEach((val: any) => {
+
+      if (val.when == 'TD') {
         this.today$.push(val);
       }
 
-      if(val.when == 'TW'){
+      if (val.when == 'TW') {
         this.week$.push(val);
       }
-  
-      if(val.when == 'TM'){
+
+      if (val.when == 'TM') {
         this.month$.push(val);
-      } 
-      
+      }
+
     });
 
   }
 
-  clearArray(){
+  clearArray() {
     this.today$.length = 0;
     this.week$.length = 0;
     this.month$.length = 0;
@@ -123,7 +123,7 @@ export class TodolistComponent implements OnInit {
 
   // post todo method
 
-  
+
   toggleValue = "TD";
 
   addTodo(form: any) {
@@ -153,7 +153,7 @@ export class TodolistComponent implements OnInit {
       // }
 
       this.dialog.closeAll();
-      this.api.postTodo(form).subscribe(data =>{
+      this.api.postTodo(form).subscribe(data => {
         console.log(data);
       })
 
@@ -187,34 +187,46 @@ export class TodolistComponent implements OnInit {
 
     if (form.content != "") {
 
-      if (this.formData.when == form.when) {
+      // if (this.formData.when == form.when) {
 
-        const updateData = this.formData;
-        updateData.content = form.content;
-        updateData.when = form.when;
+      //   const updateData = this.formData;
+      //   updateData.content = form.content;
+      //   updateData.when = form.when;
 
-        if (updateData.when == 'TD') {
-          this.dialog.closeAll();
-          this.api.putToday(updateData.id, updateData).subscribe(dat => {
-            console.log(dat);
-          })
-        }
+      //   if (updateData.when == 'TD') {
+      //     this.dialog.closeAll();
+      //     this.api.putToday(updateData.id, updateData).subscribe(dat => {
+      //       console.log(dat);
+      //     })
+      //   }
 
-        if (updateData.when == 'TW') {
-          this.dialog.closeAll();
-          this.api.putWeek(updateData.id, updateData).subscribe(dat => {
-            console.log(dat);
-          })
-        }
+      //   if (updateData.when == 'TW') {
+      //     this.dialog.closeAll();
+      //     this.api.putWeek(updateData.id, updateData).subscribe(dat => {
+      //       console.log(dat);
+      //     })
+      //   }
 
-        if (updateData.when == 'TM') {
-          this.dialog.closeAll();
-          this.api.putMonth(updateData.id, updateData).subscribe(dat => {
-            console.log(dat);
-          })
-        }
+      //   if (updateData.when == 'TM') {
+      //     this.dialog.closeAll();
+      //     this.api.putMonth(updateData.id, updateData).subscribe(dat => {
+      //       console.log(dat);
+      //     })
+      //   }
 
-      }
+      // }
+
+      const updateData = this.formData;
+      updateData.content = form.content;
+      updateData.when = form.when;
+      
+      
+      this.dialog.closeAll();
+      this.api.putTodo(updateData,updateData.id).subscribe(data=>{
+        console.log(data);
+        this.clearArray();
+        this.getTodoData();
+      })
 
     }
 
@@ -265,9 +277,9 @@ export class TodolistComponent implements OnInit {
     // }
 
     this.dialog.closeAll();
-    this.api.deleteTodo(dlt.id).subscribe(data =>{
+    this.api.deleteTodo(dlt.id).subscribe(data => {
       console.log(data);
-      
+
       this.clearArray();
       this.getTodoData();
     })
@@ -277,30 +289,30 @@ export class TodolistComponent implements OnInit {
 
   // change isdone function
 
-  todoIsDone(form:any){
+  todoIsDone(form: any) {
 
 
-    if(form.when == 'TD'){
-      this.api.putToday(form.id,form).subscribe(tData =>{
+    if (form.when == 'TD') {
+      this.api.putToday(form.id, form).subscribe(tData => {
         console.log(tData);
       })
     }
 
-    if(form.when == 'TW'){
-      this.api.putWeek(form.id,form).subscribe(wData =>{
+    if (form.when == 'TW') {
+      this.api.putWeek(form.id, form).subscribe(wData => {
         console.log(wData);
       })
     }
 
-    if(form.when == 'TM'){
-      this.api.putMonth(form.id,form).subscribe(mData =>{
+    if (form.when == 'TM') {
+      this.api.putMonth(form.id, form).subscribe(mData => {
         console.log(mData);
       })
     }
 
-    
 
-  } 
+
+  }
 
 
   changeIsDone(form: any) {
@@ -311,7 +323,7 @@ export class TodolistComponent implements OnInit {
       this.todoIsDone(form);
       return;
     }
-    
+
     if (form.isDone == false) {
       form.isDone = true;
       this.todoIsDone(form);

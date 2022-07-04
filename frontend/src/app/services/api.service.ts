@@ -117,6 +117,13 @@ export class ApiService {
     return this.http.post(this.api_link, data)
   }
 
+  // todo put api
+
+  putTodo(data:any,id:number){
+    return this.http.put(this.api_link+id,data)
+  }
+
+
   // todo delete api
 
   deleteTodo(id:number){
