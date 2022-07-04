@@ -292,24 +292,28 @@ export class TodolistComponent implements OnInit {
   todoIsDone(form: any) {
 
 
-    if (form.when == 'TD') {
-      this.api.putToday(form.id, form).subscribe(tData => {
-        console.log(tData);
-      })
-    }
+    // if (form.when == 'TD') {
+    //   this.api.putToday(form.id, form).subscribe(tData => {
+    //     console.log(tData);
+    //   })
+    // }
 
-    if (form.when == 'TW') {
-      this.api.putWeek(form.id, form).subscribe(wData => {
-        console.log(wData);
-      })
-    }
+    // if (form.when == 'TW') {
+    //   this.api.putWeek(form.id, form).subscribe(wData => {
+    //     console.log(wData);
+    //   })
+    // }
 
-    if (form.when == 'TM') {
-      this.api.putMonth(form.id, form).subscribe(mData => {
-        console.log(mData);
-      })
-    }
+    // if (form.when == 'TM') {
+    //   this.api.putMonth(form.id, form).subscribe(mData => {
+    //     console.log(mData);
+    //   })
+    // }
 
+    this.api.putTodo(form,form.id).subscribe(data=>{
+      console.log(data);
+      
+    })
 
 
   }
