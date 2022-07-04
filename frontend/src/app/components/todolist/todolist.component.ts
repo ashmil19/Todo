@@ -96,10 +96,12 @@ export class TodolistComponent implements OnInit {
       
     });
 
-    
-    
+  }
 
-      
+  clearArray(){
+    this.today$.length = 0;
+    this.week$.length = 0;
+    this.month$.length = 0;
   }
 
   // add button dialog function
@@ -241,26 +243,35 @@ export class TodolistComponent implements OnInit {
   deleteTodo(dlt: any) {
     console.log(dlt);
 
-    if (dlt.when == 'TD') {
-      this.api.deleteToday(dlt.id).subscribe(data => {
-        console.log(data);
-        this.dialog.closeAll();
-      })
-    }
+    // if (dlt.when == 'TD') {
+    //   this.api.deleteToday(dlt.id).subscribe(data => {
+    //     console.log(data);
+    //     this.dialog.closeAll();
+    //   })
+    // }
 
-    if (dlt.when == 'TW') {
-      this.api.deleteWeek(dlt.id).subscribe(data => {
-        console.log(data);
-        this.dialog.closeAll();
-      })
-    }
+    // if (dlt.when == 'TW') {
+    //   this.api.deleteWeek(dlt.id).subscribe(data => {
+    //     console.log(data);
+    //     this.dialog.closeAll();
+    //   })
+    // }
 
-    if (dlt.when == 'TM') {
-      this.api.deleteMonth(dlt.id).subscribe(data => {
-        console.log(data);
-        this.dialog.closeAll();
-      })
-    }
+    // if (dlt.when == 'TM') {
+    //   this.api.deleteMonth(dlt.id).subscribe(data => {
+    //     console.log(data);
+    //     this.dialog.closeAll();
+    //   })
+    // }
+
+    this.dialog.closeAll();
+    this.api.deleteTodo(dlt.id).subscribe(data =>{
+      console.log(data);
+      
+      this.clearArray();
+      this.getTodoData();
+    })
+
   }
 
 

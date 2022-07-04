@@ -31,10 +31,6 @@
     },
     {
       "when": "TD",
-      "id": 7
-    },
-    {
-      "when": "TD",
       "id": 8
     }
   ],
@@ -91,12 +87,6 @@
   ],
   "todo": [
     {
-      "id": 1,
-      "content": "month",
-      "when": "TM",
-      "isDone": false
-    },
-    {
       "id": 2,
       "content": "adsas",
       "when": "TM",
@@ -109,46 +99,10 @@
       "isDone": true
     },
     {
-      "id": 4,
-      "content": "gsdfgfd",
-      "when": "TD",
-      "isDone": false
-    },
-    {
       "id": 5,
       "content": "ahi;",
       "when": "TW",
       "isDone": false
-    },
-    {
-      "id": 6,
-      "content": "aasdbvhi;",
-      "when": "TW",
-      "isDone": true
-    },
-    {
-      "content": "hey",
-      "when": "TD",
-      "id": 7,
-      "isDone": true
-    },
-    {
-      "content": "sadfa",
-      "when": "TW",
-      "id": 8,
-      "isDone": true
-    },
-    {
-      "content": "sdfa",
-      "when": "TW",
-      "id": 9,
-      "isDone": true
-    },
-    {
-      "content": "sdfas3e",
-      "when": "TM",
-      "id": 10,
-      "isDone": true
     }
   ]
 }

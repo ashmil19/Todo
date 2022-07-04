@@ -117,4 +117,10 @@ export class ApiService {
     return this.http.post(this.api_link, data)
   }
 
+  // todo delete api
+
+  deleteTodo(id:number){
+    return this.http.delete(this.api_link+id)
+  }
+
 }
