@@ -23,6 +23,15 @@
       "when": "TD",
       "id": 5,
       "isDone": false
+    },
+    {
+      "content": "sadfa",
+      "when": "TD",
+      "id": 6
+    },
+    {
+      "when": "TD",
+      "id": 8
     }
   ],
   "week": [
@@ -36,7 +45,7 @@
       "id": 2,
       "content": "asdihdskdajflajfldkjalfdlaldfalfdkalkfadfjlajsdfkljasldfja",
       "when": "TW",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": 3,
@@ -61,7 +70,7 @@
       "id": 1,
       "content": "month",
       "when": "TM",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": 2,
@@ -74,6 +83,43 @@
       "when": "TM",
       "id": 5,
       "isDone": true
+    }
+  ],
+  "todo": [
+    {
+      "id": 2,
+      "content": "king vas",
+      "when": "TW",
+      "isDone": true
+    },
+    {
+      "id": 3,
+      "content": "a;lp ars",
+      "when": "TM",
+      "isDone": true
+    },
+    {
+      "id": 5,
+      "content": "ahi",
+      "when": "TM",
+      "isDone": false
+    },
+    {
+      "content": "asdfafd",
+      "when": "TD",
+      "id": 6,
+      "isDone": true
+    },
+    {
+      "content": "sdas sadfsak",
+      "when": "TW",
+      "id": 8,
+      "isDone": false
+    },
+    {
+      "content": "dfaf",
+      "when": "TD",
+      "id": 11
     }
   ]
 }
