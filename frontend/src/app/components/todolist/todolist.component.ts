@@ -25,13 +25,13 @@ export class TodolistComponent implements OnInit {
   constructor(public dialog: MatDialog, private api: ApiService) { }
 
   ngOnInit(): void {
-    // this.getAll();
     this.getTodoData();
 
-    // this.api.refreshRequired.subscribe(resp => {
-    //   // this.getAll();
-    //   this.getTodoData();
-    // })
+    this.api.refreshRequired.subscribe(resp => {
+      console.log('resp ',resp);
+      this.clearArray();
+      this.getTodoData();
+    })
   }
 
 
@@ -43,23 +43,6 @@ export class TodolistComponent implements OnInit {
   week$: any[] = [];
   month$: any[] = [];
 
-  // getTodayData() {
-  //   this.api.getToday().subscribe(data => {
-  //     this.today$ = data;
-  //   })
-  // }
-
-  // getWeekData() {
-  //   this.api.getWeek().subscribe(data => {
-  //     this.week$ = data;
-  //   })
-  // }
-
-  // getMonthData() {
-  //   this.api.getMonth().subscribe(data => {
-  //     this.month$ = data;
-  //   })
-  // }
 
   // get todo data method
 
@@ -70,12 +53,6 @@ export class TodolistComponent implements OnInit {
     })
   }
 
-  getAll() {
-    // this.getTodayData();
-    // this.getWeekData();
-    // this.getMonthData();
-
-  }
 
   checkTodoSection(value: any) {
 
@@ -131,27 +108,6 @@ export class TodolistComponent implements OnInit {
 
     if (form.content != "") {
 
-      // if (form.when == "TD") {
-      //   this.dialog.closeAll();
-      //   this.api.postToday(form).subscribe(data => {
-      //     console.log(data);
-      //   })
-      // }
-
-      // if (form.when == "TW") {
-      //   this.dialog.closeAll();
-      //   this.api.postWeek(form).subscribe(data => {
-      //     console.log(data);
-      //   })
-      // }
-
-      // if (form.when == "TM") {
-      //   this.dialog.closeAll();
-      //   this.api.postMonth(form).subscribe(data => {
-      //     console.log(data);
-      //   })
-      // }
-
       this.dialog.closeAll();
       this.api.postTodo(form).subscribe(data => {
         console.log(data);
@@ -187,35 +143,6 @@ export class TodolistComponent implements OnInit {
 
     if (form.content != "") {
 
-      // if (this.formData.when == form.when) {
-
-      //   const updateData = this.formData;
-      //   updateData.content = form.content;
-      //   updateData.when = form.when;
-
-      //   if (updateData.when == 'TD') {
-      //     this.dialog.closeAll();
-      //     this.api.putToday(updateData.id, updateData).subscribe(dat => {
-      //       console.log(dat);
-      //     })
-      //   }
-
-      //   if (updateData.when == 'TW') {
-      //     this.dialog.closeAll();
-      //     this.api.putWeek(updateData.id, updateData).subscribe(dat => {
-      //       console.log(dat);
-      //     })
-      //   }
-
-      //   if (updateData.when == 'TM') {
-      //     this.dialog.closeAll();
-      //     this.api.putMonth(updateData.id, updateData).subscribe(dat => {
-      //       console.log(dat);
-      //     })
-      //   }
-
-      // }
-
       const updateData = this.formData;
       updateData.content = form.content;
       updateData.when = form.when;
@@ -224,13 +151,9 @@ export class TodolistComponent implements OnInit {
       this.dialog.closeAll();
       this.api.putTodo(updateData,updateData.id).subscribe(data=>{
         console.log(data);
-        this.clearArray();
-        this.getTodoData();
       })
 
     }
-
-
 
   }
 
@@ -255,33 +178,11 @@ export class TodolistComponent implements OnInit {
   deleteTodo(dlt: any) {
     console.log(dlt);
 
-    // if (dlt.when == 'TD') {
-    //   this.api.deleteToday(dlt.id).subscribe(data => {
-    //     console.log(data);
-    //     this.dialog.closeAll();
-    //   })
-    // }
-
-    // if (dlt.when == 'TW') {
-    //   this.api.deleteWeek(dlt.id).subscribe(data => {
-    //     console.log(data);
-    //     this.dialog.closeAll();
-    //   })
-    // }
-
-    // if (dlt.when == 'TM') {
-    //   this.api.deleteMonth(dlt.id).subscribe(data => {
-    //     console.log(data);
-    //     this.dialog.closeAll();
-    //   })
-    // }
-
     this.dialog.closeAll();
     this.api.deleteTodo(dlt.id).subscribe(data => {
       console.log(data);
-
-      this.clearArray();
-      this.getTodoData();
+      // this.clearArray();
+      // this.getTodoData();
     })
 
   }
@@ -290,25 +191,6 @@ export class TodolistComponent implements OnInit {
   // change isdone function
 
   todoIsDone(form: any) {
-
-
-    // if (form.when == 'TD') {
-    //   this.api.putToday(form.id, form).subscribe(tData => {
-    //     console.log(tData);
-    //   })
-    // }
-
-    // if (form.when == 'TW') {
-    //   this.api.putWeek(form.id, form).subscribe(wData => {
-    //     console.log(wData);
-    //   })
-    // }
-
-    // if (form.when == 'TM') {
-    //   this.api.putMonth(form.id, form).subscribe(mData => {
-    //     console.log(mData);
-    //   })
-    // }
 
     this.api.putTodo(form,form.id).subscribe(data=>{
       console.log(data);
@@ -322,16 +204,15 @@ export class TodolistComponent implements OnInit {
   changeIsDone(form: any) {
     console.log(form);
 
-    if (form.isDone == true) {
+    if (form.isDone) {
       form.isDone = false;
       this.todoIsDone(form);
       return;
     }
 
-    if (form.isDone == false) {
+    if (!form.isDone) {
       form.isDone = true;
       this.todoIsDone(form);
-      return;
     }
 
   }

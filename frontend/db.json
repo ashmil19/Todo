@@ -95,12 +95,12 @@
     {
       "id": 3,
       "content": "a;lp ars",
-      "when": "TD",
-      "isDone": false
+      "when": "TM",
+      "isDone": true
     },
     {
       "id": 5,
-      "content": "ahi; laskd\n",
+      "content": "ahi",
       "when": "TM",
       "isDone": false
     },
@@ -111,40 +111,15 @@
       "isDone": true
     },
     {
-      "content": "sadfas",
-      "when": "TD",
-      "id": 7,
-      "isDone": false
-    },
-    {
-      "content": "sda",
-      "when": "TD",
-      "id": 8,
-      "isDone": true
-    },
-    {
-      "content": "sadfsa",
+      "content": "sdas sadfsak",
       "when": "TW",
-      "id": 9,
+      "id": 8,
       "isDone": false
     },
     {
-      "content": "sdfsafd",
-      "when": "TM",
-      "id": 10,
-      "isDone": true
-    },
-    {
-      "content": "sdfasdf",
-      "when": "TM",
-      "id": 11,
-      "isDone": true
-    },
-    {
-      "content": "dsfas",
-      "when": "TM",
-      "id": 12,
-      "isDone": false
+      "content": "dfaf",
+      "when": "TD",
+      "id": 11
     }
   ]
 }

@@ -127,7 +127,11 @@ export class ApiService {
   // todo delete api
 
   deleteTodo(id:number){
-    return this.http.delete(this.api_link+id)
+    return this.http.delete(this.api_link+id).pipe(
+      tap(() => {
+        this.refreshRequired.next();
+      })
+    );
   }
 
 }
