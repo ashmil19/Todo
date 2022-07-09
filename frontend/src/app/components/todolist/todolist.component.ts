@@ -29,8 +29,7 @@ export class TodolistComponent implements OnInit {
 
     this.api.refreshRequired.subscribe(resp => {
       console.log('resp ',resp);
-      this.clearArray();
-      this.getTodoData();
+      this.refreshUI();
     })
   }
 
@@ -75,10 +74,11 @@ export class TodolistComponent implements OnInit {
 
   }
 
-  clearArray() {
+  refreshUI() {
     this.today$.length = 0;
     this.week$.length = 0;
     this.month$.length = 0;
+    this.getTodoData();
   }
 
   // add button dialog function
@@ -181,8 +181,6 @@ export class TodolistComponent implements OnInit {
     this.dialog.closeAll();
     this.api.deleteTodo(dlt.id).subscribe(data => {
       console.log(data);
-      // this.clearArray();
-      // this.getTodoData();
     })
 
   }
