@@ -21,11 +21,12 @@
                     <!-- <span class="material-icons plus" (click)="openDialog()">add</span> -->
                 </div>
                 <div class="box-body">
-                    <div class="no-todo" *ngIf="today$.length == 0">
+                    <!-- <div class="no-todo" *ngIf="today$.length == 0">
                         <p>No more todos for <strong>today!</strong></p>
-                    </div>
+                    </div> -->
 
                     <div *ngFor="let item of today$">
+
 
                         <div class="box-body-text"  *ngIf="item.isDone == false">
                             <div class="box-text-check">
@@ -54,6 +55,7 @@
                                 <span class="material-icons del" (click)="openDeleteDialog(item)">delete_outline</span>
                             </div>
                         </div>
+
                         
                     </div>
 
@@ -66,9 +68,9 @@
                     <!-- <span class="material-icons plus">add</span> -->
                 </div>
                 <div class="box-body">
-                    <div class="no-todo" *ngIf="week$.length == 0">
+                    <!-- <div class="no-todo" *ngIf="week$.length == 0">
                         <p>No more todos for <strong>this week!</strong></p>
-                    </div>
+                    </div> -->
 
                     <div *ngFor="let item of week$">
 
@@ -111,9 +113,9 @@
                     <!-- <span class="material-icons plus">add</span> -->
                 </div>
                 <div class="box-body">
-                    <div class="no-todo" *ngIf="month$.length == 0">
+                    <!-- <div class="no-todo" *ngIf="month$.length == 0">
                         <p>No more todos for <strong>this month!</strong></p>
-                    </div>
+                    </div> -->
 
                     <div *ngFor="let item of month$">
 

@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 
+import { map } from 'rxjs/operators';
+
 import { MatDialog } from '@angular/material/dialog';
 
 import { ApiService } from 'src/app/services/api.service';
@@ -10,6 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./todolist.component.css']
 })
 export class TodolistComponent implements OnInit {
+
 
   tdy: Date = new Date();
 
@@ -28,15 +31,16 @@ export class TodolistComponent implements OnInit {
     this.getTodoData();
 
     this.api.refreshRequired.subscribe(resp => {
-      console.log('resp ',resp);
-      this.refreshUI();
+      this.getTodoData();
     })
   }
 
 
 
 
-  // get todo methods
+
+
+  val: any;
 
   today$: any[] = [];
   week$: any[] = [];
@@ -47,26 +51,33 @@ export class TodolistComponent implements OnInit {
 
   getTodoData() {
     this.api.getTodo().subscribe(data => {
+      this.today$.length = 0;
+      this.week$.length = 0;
+      this.month$.length = 0;
+
       this.checkTodoSection(data);
 
     })
   }
 
 
-  checkTodoSection(value: any) {
+  checkTodoSection(value: Array<any>) {
 
 
     value.forEach((val: any) => {
 
       if (val.when == 'TD') {
+
         this.today$.push(val);
       }
 
       if (val.when == 'TW') {
+
         this.week$.push(val);
       }
 
       if (val.when == 'TM') {
+
         this.month$.push(val);
       }
 
@@ -74,12 +85,7 @@ export class TodolistComponent implements OnInit {
 
   }
 
-  refreshUI() {
-    this.today$.length = 0;
-    this.week$.length = 0;
-    this.month$.length = 0;
-    this.getTodoData();
-  }
+
 
   // add button dialog function
 
@@ -146,11 +152,12 @@ export class TodolistComponent implements OnInit {
       const updateData = this.formData;
       updateData.content = form.content;
       updateData.when = form.when;
-      
-      
+
+
       this.dialog.closeAll();
-      this.api.putTodo(updateData,updateData.id).subscribe(data=>{
+      this.api.putTodo(updateData, updateData.id).subscribe(data => {
         console.log(data);
+
       })
 
     }
@@ -190,9 +197,9 @@ export class TodolistComponent implements OnInit {
 
   todoIsDone(form: any) {
 
-    this.api.putTodo(form,form.id).subscribe(data=>{
+    this.api.putTodo(form, form.id).subscribe(data => {
       console.log(data);
-      
+
     })
 
 

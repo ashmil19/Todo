@@ -9,7 +9,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  api_link = 'http://localhost:3000/todo/';
+  api_link = 'http://127.0.0.1:8000/api/';
 
 
   private _refreshrequired = new Subject<void>();
@@ -21,20 +21,28 @@ export class ApiService {
 
   //  todo get api
 
-  getTodo(): Observable<object> {
-    return this.http.get(this.api_link);
+  getTodo(): Observable<any[]>{
+    return this.http.get<any[]>(this.api_link);
   }
 
   //  todo post api
 
   postTodo(data: any) {
-    return this.http.post(this.api_link, data)
+    return this.http.post(this.api_link, data).pipe(
+      tap(() => {
+        this.refreshRequired.next();
+      })
+    );
   }
 
   // todo put api
 
   putTodo(data:any,id:number){
-    return this.http.put(this.api_link+id,data)
+    return this.http.put(this.api_link+id+'/',data).pipe(
+      tap(() => {
+        this.refreshRequired.next();
+      })
+    );
   }
 
 
